@@ -8,8 +8,6 @@ function filterArray<T>(array: T[], condition: (element: T) => boolean): T[] {
 
 
 
-
-
 // Узагальнений стек
 
 // Створіть узагальнений клас Stack, який являє собою стек елементів з методами push, pop і peek.
@@ -28,6 +26,8 @@ class Stack<T> {
   }
 
   peek(): T | undefined {
+    // const lastIndex = this.elements.length - 1;
+    // return this.elements[lastIndex];
     if (this.isEmpty()) {
       return undefined;
     }
@@ -54,21 +54,22 @@ class Stack<T> {
 // Створіть узагальнений клас Dictionary, який являє собою словник (асоціативний масив) з методами set, get і has.
 //  Обмежте ключі тільки валідними типами для об'єкта
 
-class Dictionary<T> {
+class Dictionary<T extends string> {
   private items: { [key: string]: T } = {};
 
-  set<K extends string>(key: K, value: T): void {
+  set(key: string, value: T): void {
     this.items[key] = value;
   }
 
-  get<K extends string>(key: K): T | undefined {
+  get(key: string): T | undefined {
     return this.items[key];
   }
 
-  has<K extends string>(key: K): boolean {
+  has(key: string): boolean {
     return key in this.items;
   }
 }
+
 
 
 // class Dictionary<T extends string | number | symbol, U> {
@@ -88,21 +89,6 @@ class Dictionary<T> {
 // }
 
 
-// class Dictionary<T , U> {
-//   private items: { [key: string]: U } = {};
-
-//   set(key: T, value: U): void {
-//     this.items[String(key)] = value;
-//   }
-
-//   get(key: T): U | undefined {
-//     return this.items[String(key)];
-//   }
-
-//   has(key: T): boolean {
-//     return String(key) in this.items;
-//   }
-// }
 
 
 
